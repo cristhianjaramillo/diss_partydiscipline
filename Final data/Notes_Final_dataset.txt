@@ -1,0 +1,1 @@
+The sheet final_edited is the one used on this study because it exclude cases of MPs that did not complete their tenure.
