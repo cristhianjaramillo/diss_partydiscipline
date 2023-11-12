@@ -1,5 +1,7 @@
 # Unravelling Party Discipline in the Global South: A Case Study of Peru Using Beta Regression Analysis
 
+[![Twitter Badge](https://img.shields.io/badge/Twitter-Profile-informational?style=flat&logo=twitter&logoColor=white&color=1CA2F1)](https://twitter.com/schrodingercase) [![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-Profile-informational?style=flat&logo=linkedin&logoColor=white&color=0D76A8)](https://www.linkedin.com/in/cristhian-jaramillo-00888aa6/)
+
 Welcome to the GitHub repository for the thesis titled "Unravelling Party Discipline in the Global South: A Case Study of Peru Using Beta Regression Analysis" by Cristhian Jaramillo, conducted as part of the MSc Social Research Methods program at the London School of Economics and Political Science.
 
 ## Research Overview
@@ -10,27 +12,28 @@ To test this hypothesis and shed light on the research question, the dissertatio
 
 The predictors of this model encompass party control over its members and various control variables. Within the Peruvian context, the assessment of party control over MPs involves an examination of their affiliation status. Membership affiliation signifies an individual's adherence to the internal regulations stipulated by their party. Therefore, as theorized by scholars, the manifestation of party control can be discerned through the presence or absence of party affiliation. Control variables include Gender, Age, Proportion of Votes, Political Experience, Re-election status, Party Role, and Ruling Party affiliation. These variables were chosen based on their relevance to party discipline literature and their availability on the mentioned websites. The party discipline index was adjusted to prevent exact values of 1, facilitating beta regression, and continuous control variables were standardized.
 
-[!Citation] Crucial information necessary for users to succeed.
+## Citation
 
-Text that is not a quote
+How to Cite the party discipline dataset:
 
-> Text that is a quote
+<details>
+    <summary> Chicago style </summary>
 
-\<details\>
+### Chicago style
+```
+Jaramillo, Cristhian. 2023. "Peruvian Parliamentary Party Discipline Index Dataset (2011-2019)." figshare. Dataset. [https://doi.org/10.6084/m9.figshare.24549274.v2](https://doi.org/10.6084/m9.figshare.24549274.v2).
+```
+</details>
 
-\<summary\>Tips for collapsed sections\</summary\>
-
-### You can add a header
-
-You can add text within a collapsed section.
-
-You can add an image or a code block, too.
-
-``` ruby
-   puts "Hello World"
+- APA style
+```
+Jaramillo, C. (2023). *Peruvian Parliamentary Party Discipline Index Dataset (2011-2019)*. figshare. [https://doi.org/10.6084/m9.figshare.24549274.v2](https://doi.org/10.6084/m9.figshare.24549274.v2)
 ```
 
-</details>
+-Harvard style
+```
+Jaramillo, C. (2023) *Peruvian Parliamentary Party Discipline Index Dataset (2011-2019)*, figshare, Dataset. [https://doi.org/10.6084/m9.figshare.24549274.v2](https://doi.org/10.6084/m9.figshare.24549274.v2)
+```
 
 
 ## Raw Data
@@ -101,4 +104,4 @@ The `./Code/` directory contains two separate scripts to replicate each analytic
 
 ![](Figures/evaluation.jpg)
 
-[![Visits Badge](https://badges.pufler.dev/visits/braydoncoyer/braydoncoyer)](https:braydoncoyer.dev) [![Twitter Badge](https://img.shields.io/badge/Twitter-Profile-informational?style=flat&logo=twitter&logoColor=white&color=1CA2F1)](https://twitter.com/BraydonCoyer) [![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-Profile-informational?style=flat&logo=linkedin&logoColor=white&color=0D76A8)](https://www.linkedin.com/in/braydon-coyer/) [![CodePen Badge](https://img.shields.io/badge/CodePen-Profile-informational?style=flat&logo=codepen&logoColor=white&color=black)](https://codepen.io/braydoncoyer)
+
