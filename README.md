@@ -1,6 +1,6 @@
 # Unravelling Party Discipline in the Global South: A Case Study of Peru Using Beta Regression Analysis
 
-[![Twitter Badge](https://img.shields.io/badge/Twitter-Profile-informational?style=flat&logo=twitter&logoColor=white&color=1CA2F1)](https://twitter.com/schrodingercase) [![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-Profile-informational?style=flat&logo=linkedin&logoColor=white&color=0D76A8)](https://www.linkedin.com/in/cristhian-jaramillo-00888aa6/)
+[![Twitter Badge](https://img.shields.io/badge/Twitter-Profile-informational?style=flat&logo=twitter&logoColor=white&color=1CA2F1)](https://twitter.com/schrodingercase) [![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-Profile-informational?style=flat&logo=linkedin&logoColor=white&color=0D76A8)](https://www.linkedin.com/in/cristhian-jaramillo-00888aa6/)[![GitHub Profile Badge](https://img.shields.io/badge/GitHub-Profile-informational?style=flat&logo=github&logoColor=white&color=1CA2F1)](https://github.com/cristhianjaramillo)[![ORCID Profile Badge](https://img.shields.io/badge/ORCID-Profile-informational?style=flat&logo=orcid&logoColor=white&color=A6CE39)](https://orcid.org/0000-0002-4673-0565)[![ResearchGate Profile Badge](https://img.shields.io/badge/ResearchGate-Profile-informational?style=flat&logo=researchgate&logoColor=white&color=00CCBB)](https://www.researchgate.net/profile/Cristhian-Jaramillo-2)
 
 Welcome to the GitHub repository for the thesis titled "Unravelling Party Discipline in the Global South: A Case Study of Peru Using Beta Regression Analysis" by Cristhian Jaramillo, conducted as part of the MSc Social Research Methods program at the London School of Economics and Political Science.
 
@@ -14,27 +14,35 @@ The predictors of this model encompass party control over its members and variou
 
 ## Citation
 
-How to Cite the party discipline dataset:
+The dataset for the party discipline index of the Peruvian Parliament spanning 2011-2019 can be appropriately cited as outlined below. Additionally, to facilitate easy citation, a [.ris file](https://github.com/cristhianjaramillo/dissertation_partydiscipline/blob/main/Peruvian_Party_Discipline_Index.ris) is provided in this repository for download. Select the citation style that aligns with your preferences and requirements.
 
 <details>
     <summary> Chicago style </summary>
-
-### Chicago style
 ```
 Jaramillo, Cristhian. 2023. "Peruvian Parliamentary Party Discipline Index Dataset (2011-2019)." figshare. Dataset. [https://doi.org/10.6084/m9.figshare.24549274.v2](https://doi.org/10.6084/m9.figshare.24549274.v2).
 ```
 </details>
 
-- APA style
+<details>
+    <summary> APA style </summary>
 ```
 Jaramillo, C. (2023). *Peruvian Parliamentary Party Discipline Index Dataset (2011-2019)*. figshare. [https://doi.org/10.6084/m9.figshare.24549274.v2](https://doi.org/10.6084/m9.figshare.24549274.v2)
 ```
+</details>
 
--Harvard style
+<details>
+    <summary> Harvard style </summary>
 ```
-Jaramillo, C. (2023) *Peruvian Parliamentary Party Discipline Index Dataset (2011-2019)*, figshare, Dataset. [https://doi.org/10.6084/m9.figshare.24549274.v2](https://doi.org/10.6084/m9.figshare.24549274.v2)
+Jaramillo, Cristhian. *Peruvian Parliamentary Party Discipline Index Dataset (2011-2019)*. figshare, 2023. [https://doi.org/10.6084/m9.figshare.24549274.v2](https://doi.org/10.6084/m9.figshare.24549274.v2)
 ```
+</details>
 
+<details>
+    <summary> IEEE Style </summary>
+```
+C. Jaramillo, "Peruvian Parliamentary Party Discipline Index Dataset (2011-2019)," figshare, 2023. [https://doi.org/10.6084/m9.figshare.24549274.v2](https://doi.org/10.6084/m9.figshare.24549274.v2)
+```
+</details>
 
 ## Raw Data
 
@@ -103,5 +111,3 @@ The `./Code/` directory contains two separate scripts to replicate each analytic
 -   [evaluation.R](https://github.com/cristhianjaramillo/dissertation_partydiscipline/blob/main/Code/evaluation.R): This R file houses the model evaluation section, presenting AIC and BIC values. Additionally, it includes a detailed figure showcasing diagnostic plots for the beta regression model, covering residuals, normality, and homoscedasticity.
 
 ![](Figures/evaluation.jpg)
-
-
