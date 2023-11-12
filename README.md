@@ -1,12 +1,6 @@
 # Unravelling Party Discipline in the Global South: A Case Study of Peru Using Beta Regression Analysis
 
-<div align="center">
-  [![Twitter Badge](https://img.shields.io/badge/Twitter-Profile-informational?style=flat&logo=twitter&logoColor=white&color=1CA2F1)](https://twitter.com/schrodingercase)
-  [![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-Profile-informational?style=flat&logo=linkedin&logoColor=white&color=0D76A8)](https://www.linkedin.com/in/cristhian-jaramillo-00888aa6/)
-  [![GitHub Profile Badge](https://img.shields.io/badge/GitHub-Profile-informational?style=flat&logo=github&logoColor=white&color=1CA2F1)](https://github.com/cristhianjaramillo)
-  [![ORCID Profile Badge](https://img.shields.io/badge/ORCID-Profile-informational?style=flat&logo=orcid&logoColor=white&color=A6CE39)](https://orcid.org/0000-0002-4673-0565)
-  [![ResearchGate Profile Badge](https://img.shields.io/badge/ResearchGate-Profile-informational?style=flat&logo=researchgate&logoColor=white&color=00CCBB)](https://www.researchgate.net/profile/Cristhian-Jaramillo-2)
-</div>
+[![Twitter Badge](https://img.shields.io/badge/Twitter-Profile-informational?style=flat&logo=twitter&logoColor=white&color=1CA2F1)](https://twitter.com/schrodingercase) [![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-Profile-informational?style=flat&logo=linkedin&logoColor=white&color=0D76A8)](https://www.linkedin.com/in/cristhian-jaramillo-00888aa6/) [![GitHub Profile Badge](https://img.shields.io/badge/GitHub-Profile-informational?style=flat&logo=github&logoColor=white&color=1CA2F1)](https://github.com/cristhianjaramillo) [![ORCID Profile Badge](https://img.shields.io/badge/ORCID-Profile-informational?style=flat&logo=orcid&logoColor=white&color=A6CE39)](https://orcid.org/0000-0002-4673-0565) [![ResearchGate Profile Badge](https://img.shields.io/badge/ResearchGate-Profile-informational?style=flat&logo=researchgate&logoColor=white&color=00CCBB)](https://www.researchgate.net/profile/Cristhian-Jaramillo-2)
 
 Welcome to the GitHub repository for the thesis titled "Unravelling Party Discipline in the Global South: A Case Study of Peru Using Beta Regression Analysis" by Cristhian Jaramillo, conducted as part of the MSc Social Research Methods program at the London School of Economics and Political Science.
 
@@ -23,31 +17,43 @@ The predictors of this model encompass party control over its members and variou
 The dataset for the party discipline index of the Peruvian Parliament spanning 2011-2019 can be appropriately cited as outlined below. Additionally, to facilitate easy citation, a [.ris file](https://github.com/cristhianjaramillo/dissertation_partydiscipline/blob/main/Peruvian_Party_Discipline_Index.ris) is provided in this repository for download. Select the citation style that aligns with your preferences and requirements.
 
 <details>
-    <summary> Chicago style </summary>
-```r
+
+<summary>Chicago style</summary>
+
+``` r
 Jaramillo, Cristhian. 2023. "Peruvian Parliamentary Party Discipline Index Dataset (2011-2019)." figshare. Dataset. [https://doi.org/10.6084/m9.figshare.24549274.v2](https://doi.org/10.6084/m9.figshare.24549274.v2).
 ```
+
 </details>
 
 <details>
-    <summary> APA style </summary>
-```r
+
+<summary>APA style</summary>
+
+``` git
 Jaramillo, C. (2023). *Peruvian Parliamentary Party Discipline Index Dataset (2011-2019)*. figshare. [https://doi.org/10.6084/m9.figshare.24549274.v2](https://doi.org/10.6084/m9.figshare.24549274.v2)
 ```
+
 </details>
 
 <details>
-    <summary> Harvard style </summary>
-```r
+
+<summary>Harvard style</summary>
+
+``` git
 Jaramillo, Cristhian. *Peruvian Parliamentary Party Discipline Index Dataset (2011-2019)*. figshare, 2023. [https://doi.org/10.6084/m9.figshare.24549274.v2](https://doi.org/10.6084/m9.figshare.24549274.v2)
 ```
+
 </details>
 
 <details>
-    <summary> IEEE Style </summary>
-```r
+
+<summary>IEEE Style</summary>
+
+``` r
 C. Jaramillo, "Peruvian Parliamentary Party Discipline Index Dataset (2011-2019)," figshare, 2023. [https://doi.org/10.6084/m9.figshare.24549274.v2](https://doi.org/10.6084/m9.figshare.24549274.v2)
 ```
+
 </details>
 
 ## Raw Data
@@ -55,7 +61,7 @@ C. Jaramillo, "Peruvian Parliamentary Party Discipline Index Dataset (2011-2019)
 The `./Raw Data/` directory contains the original data extracted from confidence, no-confidence, and interpellation motions. Each file within this directory is a PDF documenting the voting behavior of the 130 MPs. It is important to note that each PDF is in Spanish, and the accompanying table provides a detailed descriptive overview of the data.
 
 |           | Interpellations | Motion of Confidence | Motion of No Confidence | Total |
-|---------------|:-------------:|:-------------:|:-------------:|:-------------:|
+|-----------|:---------------:|:--------------------:|:-----------------------:|:-----:|
 | 2011-2016 |       19        |          1           |            1            |  21   |
 | 2016-2019 |        8        |          4           |            1            |  13   |
 | Total     |       27        |          5           |            2            |  34   |
