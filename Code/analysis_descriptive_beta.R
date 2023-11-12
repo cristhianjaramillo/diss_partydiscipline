@@ -1,3 +1,5 @@
+#### Packages to use ####
+
 library(readxl)
 library(gamlss)
 library(pscl)
@@ -6,20 +8,31 @@ library(margins)
 library(broom)
 library(ggpubr)
 library(betareg)
+library(plyr)
 
-###### Data cleaning #####
+#### Data cleaning ####
 
-base <- read_excel("C:/Users/crist/OneDrive - London School of Economics/Desktop/Dissertation/Final data/Final_dataset.xlsx", 
+base <- read_excel("../Final data/Final_dataset.xlsx", 
                    sheet = "FINAL_edited")
 
-base <- base[,c(6,7,8,11,12,13,14,15,17,18)]
+base <- base[,c(6,7,8,11,12,13,14,15,17,18)] #These are the columns needed for the regression
+
 base <- as.data.frame(base)
 names(base)
+
+# Editing some of the variables
+
 base$gender <-  factor(base$gender, levels = c(0,1), labels = c("Female", "Male"))
 base$role <-  factor(base$role, levels = c(0,1), labels = c("No", "Yes"))
 base$re_elected <-  factor(base$re_elected, levels = c(0,1), labels = c("No", "Yes"))
 base$rule <-  factor(base$rule, levels = c(0,1), labels = c("No", "Yes"))
+
+# This is only for the density plot below
+
+base$party_affiliation_plot <-  factor(base$party_affiliation, levels = c(1,0), labels = c("Yes", "No"))
 base$party_affiliation <-  factor(base$party_affiliation, levels = c(0,1), labels = c("No", "Yes"))
+
+# Standarization
 
 base_b <- base %>%
   mutate(pol_experience_std = as.numeric(scale(pol_experience)),
@@ -33,7 +46,36 @@ base_b$party_discipline_adjusted <- ifelse(base_b$party_discipline == 1, 1 - 0.0
 
 summary(base_b$party_discipline_adjusted)
 
-##### Fitting regression 1 #####
+#### Descriptive analysis ####
+
+mu <- ddply(base_b, "party_affiliation_plot", summarise, grp.mean=mean(party_discipline))
+
+# Creating ypos for the location of the points
+base_b$ypos <- NA
+base_b$ypos[base_b$party_affiliation== "No"] <- 0.03 
+base_b$ypos[base_b$party_affiliation== "Yes"] <- 0.06
+
+density_plot <- ggplot(base_b, aes(x=party_discipline, color=party_affiliation_plot)) +
+  geom_density() +
+  geom_point(data=base_b, aes(x= party_discipline, y= ypos, colour= party_affiliation_plot), alpha=0.5) +
+  labs(
+    x = "\nParty discipline",
+    y = "\nDensity",
+    color = "Party affiliation"
+  ) +
+  scale_x_continuous(expand = c(0,0), limits = c(0,1.01)) +
+  scale_y_continuous(expand = c(0,0)) +
+  geom_vline(data=mu, aes(xintercept=grp.mean, color=party_affiliation_plot),
+             linetype="dashed") +
+  scale_color_brewer(palette="Set2") +
+  theme(legend.position = "none") +
+  theme_minimal()
+
+ggsave(filename = "../Figures/density_plot.jpg",
+       plot = density_plot,
+       width = 10, height = 6, units = "in")
+
+#### Fitting regression 1 ####
 
 beta_model1 <- betareg(party_discipline_adjusted ~ 
                        party_affiliation, 
@@ -55,7 +97,7 @@ coefs_1 <- beta_model1 %>%
   mutate(same_sign = ifelse(sign(lwr) == sign(upr), 1, 0)) %>% 
   mutate(model = "Model 1")
 
-##### Fitting regression 2 #####
+#### Fitting regression 2 ####
 
 beta_model2 <- betareg(party_discipline_adjusted ~ 
                       party_affiliation +
@@ -79,7 +121,7 @@ coefs_2 <- beta_model2 %>%
   mutate(same_sign = ifelse(sign(lwr) == sign(upr), 1, 0)) %>% 
   mutate(model = "Model 2")
 
-##### Fitting regression 3 #####
+#### Fitting regression 3 ####
 
 beta_model3 <- betareg(party_discipline_adjusted ~ 
                          party_affiliation +
@@ -105,7 +147,7 @@ coefs_3 <- beta_model3 %>%
   mutate(same_sign = ifelse(sign(lwr) == sign(upr), 1, 0)) %>% 
   mutate(model = "Model 3")
 
-##### Fitting regression 4 #####
+#### Fitting regression 4 ####
 
 beta_model4 <- betareg(party_discipline_adjusted ~ 
                          party_affiliation +
@@ -133,7 +175,7 @@ coefs_4 <- beta_model4 %>%
   mutate(same_sign = ifelse(sign(lwr) == sign(upr), 1, 0)) %>% 
   mutate(model = "Model 4")
 
-##### Fitting regression 5 #####
+#### Fitting regression 5 ####
 
 beta_model5 <- betareg(party_discipline_adjusted ~ 
                          party_affiliation +
@@ -163,7 +205,7 @@ coefs_5 <- beta_model5 %>%
   mutate(same_sign = ifelse(sign(lwr) == sign(upr), 1, 0)) %>% 
   mutate(model = "Model 5")
 
-##### Fitting regression 6 #####
+#### Fitting regression 6 ####
 
 beta_model6 <- betareg(party_discipline_adjusted ~ 
                          party_affiliation +
@@ -197,7 +239,7 @@ coefs_6 <- beta_model6 %>%
   mutate(model = "Model 6")
 
 
-##### Fitting regression 7 #####
+#### Fitting regression 7 ####
 
 beta_model7 <- betareg(party_discipline_adjusted ~ 
                          party_affiliation +
@@ -232,7 +274,7 @@ coefs_7 <- beta_model7 %>%
   mutate(model = "Model 7")
 
 
-##### Fitting regression 8 #####
+#### Fitting regression 8 ####
 
 beta_model8 <- betareg(party_discipline_adjusted ~ 
                          party_affiliation +
@@ -268,7 +310,9 @@ coefs_8 <- beta_model8 %>%
   mutate(same_sign = ifelse(sign(lwr) == sign(upr), 1, 0)) %>% 
   mutate(model = "Model 8")
 
-###### Graph model 8 #####
+#### Graph model 8 ####
+
+# The graph 8 has been selected given the AIC and BIC values in the "evaluation.R" file
 
 coefs_8$term <- as.character(coefs_8$term)
 
@@ -283,9 +327,7 @@ desired_order <- c("Ruling party (Yes)",
 
 coefs_8$term <- factor(coefs_8$term, levels = desired_order)
 
-pdf(paste0("model8.pdf"),
-    width = 6, height = 5)
-ggplot(coefs_8, 
+plot_8 <- ggplot(coefs_8, 
        aes(x = term, y = estimate, ymin = lwr, ymax = upr)) +
   geom_pointrange(aes(alpha = same_sign, color = factor(same_sign)), 
                   size = 0.5, show.legend = FALSE) +
@@ -307,11 +349,15 @@ ggplot(coefs_8,
         strip.background = element_rect(fill = "white"),
         strip.text = element_text(face = "bold"),
         axis.text.y = element_text(face = c(rep("plain", 7), rep("bold", 1))))
-dev.off()
 
-###### Complete graph #####
+# Saving the plot as a JPG file
+ggsave(filename = "../Figures/model8.jpg",
+       plot = plot_8,
+       width = 6, height = 5, units = "in")
 
-# Creating a huge dataset for all variables
+#### Complete graph ####
+
+# Creating a dataset for all variables
 
 total <- rbind(coefs_1, coefs_2, coefs_3, coefs_4, coefs_5, coefs_6, coefs_7, coefs_8)
 
@@ -328,9 +374,7 @@ desired_order <- c("Ruling party (Yes)",
 
 total$term <- factor(total$term, levels = desired_order)
 
-pdf(paste0("allmodels.pdf"),
-    width = 9, height = 8)
-ggplot(total, 
+plot_full <- ggplot(total, 
        aes(x = term, y = estimate, ymin = lwr, ymax = upr)) +
   geom_pointrange(aes(alpha = same_sign, color = factor(same_sign)), 
                   size = 0.5, show.legend = FALSE) +
@@ -352,4 +396,8 @@ ggplot(total,
         strip.background = element_rect(fill = "white"),
         strip.text = element_text(face = "bold"),
         axis.text.y = element_text(face = c(rep("plain", 7), rep("bold", 1))))
-dev.off()
+
+# Saving the plot as a JPG file
+ggsave(filename = "../Figures/model_full.jpg",
+       plot = plot_full,
+       width = 9, height = 8, units = "in")

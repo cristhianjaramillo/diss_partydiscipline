@@ -1,4 +1,4 @@
-#####EVALUATION OF MODEL#######
+#### EVALUATION OF MODEL ####
 
 library(betareg)
 library(MASS)
@@ -12,7 +12,101 @@ library(sandwich)
 library(gridExtra)
 library(caret)
 
-# Calculate AIC and BIC for each model
+# Base
+
+base <- read_excel("../Final data/Final_dataset.xlsx", 
+                   sheet = "FINAL_edited")
+
+base <- base[,c(6,7,8,11,12,13,14,15,17,18)] #These are the columns needed for the regression
+
+base <- as.data.frame(base)
+names(base)
+
+# Editing some of the variables
+
+base$gender <-  factor(base$gender, levels = c(0,1), labels = c("Female", "Male"))
+base$role <-  factor(base$role, levels = c(0,1), labels = c("No", "Yes"))
+base$re_elected <-  factor(base$re_elected, levels = c(0,1), labels = c("No", "Yes"))
+base$rule <-  factor(base$rule, levels = c(0,1), labels = c("No", "Yes"))
+base$party_affiliation <-  factor(base$party_affiliation, levels = c(0,1), labels = c("No", "Yes"))
+
+# Standarization
+
+base_b <- base %>%
+  mutate(pol_experience_std = as.numeric(scale(pol_experience)),
+         number_parties_std = as.numeric(scale(number_parties)),
+         age_std = as.numeric(scale(age)),
+         prop_votes_std = as.numeric(scale(prop_votes)))
+
+# Handling exact 1 values by subtracting a small constant
+
+base_b$party_discipline_adjusted <- ifelse(base_b$party_discipline == 1, 1 - 0.001, base_b$party_discipline)
+
+summary(base_b$party_discipline_adjusted)
+
+# Models
+
+beta_model1 <- betareg(party_discipline_adjusted ~ 
+                         party_affiliation, 
+                       data = base_b)
+
+beta_model2 <- betareg(party_discipline_adjusted ~ 
+                         party_affiliation +
+                         gender, 
+                       data = base_b)
+
+beta_model3 <- betareg(party_discipline_adjusted ~ 
+                         party_affiliation +
+                         gender + 
+                         re_elected, 
+                       data = base_b)
+
+beta_model4 <- betareg(party_discipline_adjusted ~ 
+                         party_affiliation +
+                         gender +
+                         re_elected +
+                         role, 
+                       data = base_b)
+
+beta_model5 <- betareg(party_discipline_adjusted ~ 
+                         party_affiliation +
+                         gender + 
+                         re_elected +
+                         role +
+                         pol_experience_std, 
+                       data = base_b)
+
+beta_model6 <- betareg(party_discipline_adjusted ~ 
+                         party_affiliation +
+                         gender + 
+                         re_elected +
+                         role +
+                         pol_experience_std +
+                         age_std, 
+                       data = base_b)
+
+beta_model7 <- betareg(party_discipline_adjusted ~ 
+                         party_affiliation +
+                         gender + 
+                         re_elected +
+                         role +
+                         pol_experience_std +
+                         age_std + 
+                         prop_votes_std, 
+                       data = base_b)
+
+beta_model8 <- betareg(party_discipline_adjusted ~ 
+                         party_affiliation +
+                         gender + 
+                         re_elected +
+                         role +
+                         pol_experience_std +
+                         age_std + 
+                         prop_votes_std +
+                         rule, 
+                       data = base_b)
+
+#### Calculate AIC and BIC for each model ####
 
 aic_values <- AIC(beta_model8, beta_model1, beta_model2, beta_model3, beta_model4,
                   beta_model5, beta_model6, beta_model7)
@@ -70,6 +164,8 @@ final_table
 # Calculating residuals
 residuals <- residuals(beta_model8)
 
+par(mfrow = c(1, 3))  # 1 rows, 3 columns
+
 # Residuals vs. Fitted plot
 plot1 <- plot(predict(beta_model8, type = "response"), residuals,
      xlab = "Fitted Values", ylab = "Residuals",
@@ -89,19 +185,10 @@ plot3 <- plot(predict(beta_model8, type = "response"), sqrt(abs(std_residuals)),
      xlab = "Fitted Values", ylab = "Square Root of Standardized Residuals",
      main = "Scale-Location Plot")
 
-# Create a layout for the combined plot
-layout_matrix <- matrix(c(1, 2, 3), nrow = 1)
-
-# Set up the layout
-layout(layout_matrix)
-
-# Plot the individual plots in the specified layout
-plot1
-plot2
-plot3
-
-# Reset the layout
-layout(1)
+# Save the combined plot as a JPG file with dimensions in inches
+jpg_file <- "../Figures/evaluation.jpg"
+dev.print(jpeg, file = jpg_file, width = 248.7, height = 144.6, units = "mm", res = 300)
+dev.off() 
 
 # Creating indices for cross-validation
 set.seed(123)  # For reproducibility
@@ -132,4 +219,5 @@ for (i in seq_along(folds)) {
 # Calculate cross-validated MSE
 cv_mse <- mean((cv_predictions - base_b$party_discipline_adjusted)^2)
 
+cv_mse
 summary(base_b$party_discipline_adjusted)
