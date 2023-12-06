@@ -11,6 +11,8 @@ library(car)
 library(sandwich)
 library(gridExtra)
 library(caret)
+library(readxl)
+library(dplyr)
 
 # Base
 
@@ -219,5 +221,4 @@ for (i in seq_along(folds)) {
 # Calculate cross-validated MSE
 cv_mse <- mean((cv_predictions - base_b$party_discipline_adjusted)^2)
 
-cv_mse
-summary(base_b$party_discipline_adjusted)
+cv_mse # Result: 0.03152845
