@@ -5,6 +5,8 @@
 
 Welcome to the GitHub repository for the thesis titled "Unravelling Party Discipline in the Global South: A Case Study of Peru Using Beta Regression Analysis" by Cristhian Jaramillo, conducted as part of the MSc Social Research Methods program at the London School of Economics and Political Science.
 
+For the full dissertation, you can download it [**here**](https://www.researchgate.net/publication/376550924_Unravelling_Party_Discipline_in_the_Global_South_A_Case_Study_of_Peru_Using_Beta_Regression_Analysis?channel=doi&linkId=657c80729d7bc03b307873b4&showFulltext=true)
+
 ## Table Of Content
 
 -   [Research Overview](#research-overview)
