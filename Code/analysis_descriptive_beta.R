@@ -337,7 +337,7 @@ plot_8 <- ggplot(coefs_8,
             color = "black", size = 3, show.legend = FALSE) +
   facet_wrap(~ model, nrow = 1) +
   coord_flip() +
-  scale_y_continuous("\nMarginal Effects of Predictors on Adjusted Party Discipline") +
+  scale_y_continuous("\nEstimates of Predictors on Adjusted Party Discipline") +
   scale_x_discrete("") +
   scale_alpha_continuous(range = c(0.3, 1)) +
   scale_color_manual(values = c("black", "black")) +
@@ -384,7 +384,7 @@ plot_full <- ggplot(total,
             color = "black", size = 3, show.legend = FALSE) +
   facet_wrap(~ model, nrow = 2) +
   coord_flip() +
-  scale_y_continuous("\nMarginal Effects of Predictors on Adjusted Party Discipline") +
+  scale_y_continuous("\nEstimates of Predictors on Adjusted Party Discipline") +
   scale_x_discrete("") +
   scale_alpha_continuous(range = c(0.3, 1)) +
   scale_color_manual(values = c("black", "black")) +
