@@ -5,7 +5,7 @@
 
 Welcome to the GitHub repository for the thesis titled "Unravelling Party Discipline in the Global South: A Case Study of Peru Using Beta Regression Analysis" by Cristhian Jaramillo, conducted as part of the MSc Social Research Methods program at the London School of Economics and Political Science.
 
-For the full dissertation, you can download it [**here**](https://www.researchgate.net/publication/376550924_Unravelling_Party_Discipline_in_the_Global_South_A_Case_Study_of_Peru_Using_Beta_Regression_Analysis?channel=doi&linkId=657c80729d7bc03b307873b4&showFulltext=true)
+For the full dissertation, you can download it [**here**](https://www.researchgate.net/publication/384898837_Unravelling_Party_Discipline_in_the_Global_South_A_Case_Study_of_Peru_Using_Beta_Regression_Analysis)
 
 ## Table Of Content
 
@@ -83,7 +83,7 @@ The `./Final Data/` directory comprises two files. The `./Final Data/party_disci
 
 -   `Surname 1`: The first surname of the MP.
 -   `Surname 2`: The second surname of the MP.
--   `Names`: he full names of the MP.
+-   `Names`: The full names of the MP.
 -   `Political party`: The political party for which the MP was elected.
 -   `Interpellations, motions of confidence, and motion of no confidence`: Records all votes cast by each MP. A value of 1 indicates a vote in accordance with the majority of the political party, while 0 represents a vote against the party majority. Each vote is associated with the political party of the respective MP.
 -   `Number of times MP´s vote aligns with their party`: The sum of all disciplined votes, indicating the instances where the MP voted in line with their political party.
@@ -103,7 +103,7 @@ These datasets encompass a range of variables providing comprehensive insights i
 -   `year`: The respective year.
 -   `Surname 1`: The first surname of the MP.
 -   `Surname 2`: The second surname of the MP.
--   `Names`: he full names of the MP.
+-   `Names`: The full names of the MP.
 -   `party`: Political party for which the MP was elected.
 -   `party_discipline`: Party discipline index, calculated in the **party_discipline_index** dataset.
 -   `party_affiliation`: Party affiliation of each MP, where 1 signifies affiliation to the political party, and 0 indicates no affiliation.

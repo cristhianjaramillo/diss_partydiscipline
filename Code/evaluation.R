@@ -161,6 +161,25 @@ final_table <- aic_values
 
 final_table
 
+# Standard error of PHI
+
+model_summary1 <- summary(beta_model1)
+model_summary2 <- summary(beta_model2)
+model_summary3 <- summary(beta_model3)
+model_summary4 <- summary(beta_model4)
+model_summary5 <- summary(beta_model5)
+model_summary6 <- summary(beta_model6)
+model_summary7 <- summary(beta_model7)
+model_summary8 <- summary(beta_model8)
+
+# Extract the standard errors for the mean submodel
+mean_se <- model_summary$coefficients$mean[, "Std. Error"]
+
+# Extract the standard errors for the precision submodel (phi)
+precision_se <- model_summary$coefficients$precision[, "Std. Error"]
+
+
+
 #### Further evaluation for model 8 ####
 
 # Calculating residuals
